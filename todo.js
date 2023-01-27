@@ -8,17 +8,71 @@ taskList.addEventListener("click", deleteTask);
 
 // checkEmptyList();
 
+let arrayOfTasksForLS = [];
+
+// При загрузке страницы провряем есть ли что-то в LS, если есть, тогда отрисовываем
+// console.log(localStorage.getItem("task"));
+if (localStorage.getItem("task")) {
+  let arrOfTasksFromLS = localStorage.getItem("task");
+  let parsedArrTasksFromLS = JSON.parse(arrOfTasksFromLS);
+  //   console.log(arrOfTasksFromLS);
+  //   console.log(parsedArrTasksFromLS);
+
+  parsedArrTasksFromLS.forEach((task) => {
+    //  console.log(task);
+    arrayOfTasksForLS.push(task);
+    const markup = `<li class="todo__task" id="${task.id}">
+	 <div class="todo__left">
+		<p>
+		  ${task.text}
+		</p>
+	 </div>
+	 <div class="todo__right button-todo">
+		<button class="button-todo__green" id="done-button">
+		  <img class="button-todo" src="/img/tick.svg" alt="" />
+		</button>
+		<button class="button-todo__red" id="delete-button">
+		  <img class="button-todo" src="/img/cross.svg" alt="" />
+		</button>
+	 </div>
+  </li>`;
+
+    taskList.insertAdjacentHTML("beforeend", markup);
+  });
+
+  if (taskList.children.length > 0) {
+    emptyLi.classList.add("none");
+  }
+}
+
 function addTask(e) {
   // console.log(taskList.children);
 
   e.preventDefault();
   let textFromInput = input.value;
-  console.log(textFromInput);
+  //   console.log(textFromInput);
 
-  const markup = `<li class="todo__task">
+  // Запишем текст с формы в Local Storage
+
+  let taskObj = {
+    id: Date.now(),
+    text: textFromInput,
+    done: false,
+  };
+
+  //   console.log(taskObj);
+
+  arrayOfTasksForLS.push(taskObj);
+  //   console.log(arrayOfTasksForLS);
+
+  localStorage.setItem("task", JSON.stringify(arrayOfTasksForLS));
+
+  //
+
+  const markup = `<li class="todo__task" id="${taskObj.id}">
 	 <div class="todo__left">
 		<p>
-		  ${textFromInput}
+		  ${taskObj.text}
 		</p>
 	 </div>
 	 <div class="todo__right button-todo">
@@ -55,6 +109,28 @@ function deleteTask(e) {
   if (taskList.children.length == 1) {
     emptyLi.classList.remove("none");
   }
+
+  //   console.log(e.target.closest("li").id);
+
+  // удаляет объекты с LS
+  let arrOfTasksFromLS = localStorage.getItem("task");
+  let parsedArrTasksFromLS = JSON.parse(arrOfTasksFromLS);
+  console.log(parsedArrTasksFromLS);
+  let indexOfDeletedEl = parsedArrTasksFromLS.findIndex(
+    (el) => el.id == e.target.closest("li").id
+  );
+  console.log(indexOfDeletedEl);
+  parsedArrTasksFromLS.splice(indexOfDeletedEl, 1);
+  arrayOfTasksForLS.splice(indexOfDeletedEl, 1);
+
+  localStorage.setItem("task", JSON.stringify(parsedArrTasksFromLS));
+
+  //   parsedArrTasksFromLS.forEach((taskInLs) => {
+  // 	if (e.target.closest("li").id == taskInLs.id) {
+  // 		// Ищем индекс этого элемента в массиве, чтобы потом его по этому индексу удалить
+  // 		parsedArrTasksFromLS.findIndex(el => el.id == e.target.closest("li").id);
+  // 	}
+  //   })
 }
 
 // function checkEmptyList() {
