@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/todo.css" />
+  </head>
+  <body>
+    <section class="todo">
+      <div class="todo__container">
+        <div class="todo__parentForTitle">
+          <h1 class="todo__title">Hello, I am ToDo List</h1>
+          <h2 class="todo__subtitle">There are your tasks to do below</h2>
+        </div>
+        <div class="todo__body">
+          <ul class="todo__list">
+            <li class="todo__empty empty-li">
+              <p>Я пустой!</p>
+            </li>
+            <!-- <li class="todo__task">
+              <div class="todo__left">
+                <p>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum
+                  vero cumque velit at tenetur eius corporis nemo pariatur,
+                  alias perspiciatis culpa facilis possimus facere consequuntur
+                  quos iure incidunt quisquam ipsum?
+                </p>
+              </div>
+              <div class="todo__right button-todo">
+                <button class="button-todo__green" id="done-button">
+                  <img class="button-todo" src="/img/tick.svg" alt="" />
+                </button>
+                <button class="button-todo__red" id="delete-button">
+                  <img class="button-todo" src="/img/cross.svg" alt="" />
+                </button>
+              </div>
+            </li> -->
+          </ul>
+        </div>
+        <div class="addtask">
+          <div class="addtask__title">
+            <h3>Add new task</h3>
+          </div>
+          <div class="addtask__form">
+            <form id="form">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form__control"
+                  id="taskInput"
+                  placeholder="Текст задачи"
+                  required
+                />
+                <small id="emailHelp" class="form__text text-muted"
+                  >Что делаем, сколько времени тратим, какой результат
+                  получаем.</small
+                >
+              </div>
+              <button type="submit" class="form__button">Добавить</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="/todo.js"></script>
+  </body>
+</html>

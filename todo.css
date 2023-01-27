@@ -1,0 +1,188 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside,
+section {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: 400;
+}
+
+.empty-li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  font-size: 40px;
+  border: 1px solid black;
+}
+.none {
+  display: none;
+}
+
+.todo__container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.todo__parentForTitle {
+  margin: 50px 0px 40px 0px;
+}
+.todo__title {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.todo__subtitle {
+  font-size: 20px;
+}
+.todo__body {
+  /* border: 1px solid black; */
+}
+.todo__list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.todo__task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  padding: 20px;
+}
+.button-todo {
+  display: flex;
+  gap: 8px;
+}
+.button-todo__green {
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.button-todo__green img {
+  max-width: 100%;
+  padding: 8px;
+  pointer-events: none; /* картинка внутри кнопки игнорирует все события, чтобы при клике на кнопку картинка была "невидимой" для слушателя */
+}
+.button-todo__red {
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.button-todo__red img {
+  max-width: 100%;
+  padding: 8px;
+  pointer-events: none; /* картинка внутри кнопки игнорирует все события, чтобы при клике на кнопку картинка была "невидимой" для слушателя */
+}
+
+.addtask {
+  display: flex;
+  flex-direction: column;
+  margin: 50px 0px 0px 0px;
+  border: 1px solid black;
+}
+.addtask__title {
+  font-size: 20px;
+  padding: 10px;
+}
+.form__control {
+  border: 1px solid black;
+  margin-bottom: 10px;
+  display: block;
+  margin-left: 10px;
+  padding: 0px 10px;
+  width: 90%;
+  height: 30px;
+}
+.form__text {
+  margin-left: 10px;
+}
+
+.form__button {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+  margin: 10px;
+  background-color: olivedrab;
+  color: white;
+  font-weight: 700;
+} /*# sourceMappingURL=todo.css.map */
