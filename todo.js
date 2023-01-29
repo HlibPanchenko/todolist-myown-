@@ -3,10 +3,12 @@ const input = document.querySelector("#taskInput");
 const taskList = document.querySelector(".todo__list"); //ul
 const emptyLi = document.querySelector(".todo__empty");
 const modal = document.querySelector("._modal"); // модальное окно
+const liTask = document.querySelector(".todo__task"); // li
 
 //Events
 form.addEventListener("submit", addTask);
 taskList.addEventListener("click", deleteTask);
+taskList.addEventListener("click", doneTask);
 taskList.addEventListener("click", openModal);
 modal.addEventListener("click", closeModal);
 modal.addEventListener("click", editTextInput);
@@ -14,15 +16,13 @@ modal.addEventListener("click", editTextInput);
 let arrayOfTasksForLS = [];
 
 // При загрузке страницы провряем есть ли что-то в LS, если есть, тогда отрисовываем
-
 if (localStorage.getItem("task")) {
   arrayOfTasksForLS = JSON.parse(localStorage.getItem("task"));
   // console.log(tasks);
   // отрисуем на странице то, что лежит в LS
   arrayOfTasksForLS.forEach((task) => {
-    //  console.log(task);
-    // arrayOfTasksForLS.push(task);
-    const markup = `<li class="todo__task" id="${task.id}">
+    const cssClass = task.done ? "doneAllLi" : null;
+    const markup = `<li class="todo__task ${cssClass}" id="${task.id}">
     	 <div class="todo__left">
     		<p>
     		  ${task.text}
@@ -45,7 +45,7 @@ if (localStorage.getItem("task")) {
   });
 }
 
-if (taskList.children.length > 0) {
+if (arrayOfTasksForLS.length > 0) {
   emptyLi.classList.add("none");
 }
 
@@ -109,14 +109,6 @@ function deleteTask(e) {
   if (e.target.className == "button-todo__red") {
     // если нажали на крестик, ищем li (таску) и удаляем ее.
     let task = e.target.closest("li");
-    // let task = deleteButton.closest('li');
-    console.log(task);
-
-    // Еcли удаляем все таски, то показываем "я пустой"
-    if (taskList.children.length == 1) {
-      emptyLi.classList.remove("none");
-    }
-
     const id = task.id;
 
     // Находим индекс задачи в массиве
@@ -129,6 +121,10 @@ function deleteTask(e) {
 
     // Удаляем задачу из массива
     arrayOfTasksForLS.splice(index, 1);
+    // Еcли удаляем все таски, то показываем "я пустой"
+    if (arrayOfTasksForLS.length == 0) {
+      emptyLi.classList.remove("none");
+    }
     // localStorage.setItem("task", JSON.stringify(parsedArrTasksFromLS));
     localStorage.setItem("task", JSON.stringify(arrayOfTasksForLS));
 
@@ -188,8 +184,8 @@ function editTextInput(e) {
     // console.log(newText);
 
     // console.log(arrayOfTasksForLS);
-    // вносим изменения если пользователь ввел что-то в инпут
-    if (newText) {
+    // вносим изменения если пользователь ввел что-то в инпут, трим - если пользователь введет пробел, то приложение без трима подумает что он что-то ввел и будет пустая таска
+    if (newText.trim()) {
       // по нажатию на кнопку меняется массив с данными, меняем value у таски и закрываем модальное окно
       arrayOfTasksForLS.forEach((el) => {
         if (el.id == inputInModal.id) {
@@ -207,7 +203,8 @@ function editTextInput(e) {
       taskList.innerHTML = ""; // очищаем разметку потому что дублировалось когда вносили изменения в таску
       // и уже в расчищеную разметку вставляем обновленные liшки
       arrayOfTasksForLS.forEach((task) => {
-        const markup = `<li class="todo__task" id="${task.id}">
+        const cssClass = task.done ? "doneAllLi" : null;
+        const markup = `<li class="todo__task ${cssClass}" id="${task.id}">
      <div class="todo__left">
     	<p>
     	  ${task.text}
@@ -238,5 +235,27 @@ function editTextInput(e) {
     // Чтобы каждый раз когда выходим с модального окна, разметка внутри этого окна удаляется
     document.querySelector(".modal-callback__input").remove();
     document.querySelector(".modal-callback__btn").remove();
+  }
+}
+
+function doneTask(e) {
+  if (e.target.className == "button-todo__green") {
+    // если нажали на крестик, ищем li (таску) и удаляем ее.
+    let task = e.target.closest("li");
+    let textInTask = task.querySelector("p");
+    // textInTask.classList.toggle('doneText');
+    task.classList.toggle("doneAllLi");
+
+    // вносим изменеия в массив
+    console.log(task.id);
+    arrayOfTasksForLS.forEach((el) => {
+      if (task.id == el.id) {
+        console.log(el);
+        el.done = !el.done;
+      }
+    });
+
+    console.log(arrayOfTasksForLS);
+    localStorage.setItem("task", JSON.stringify(arrayOfTasksForLS));
   }
 }

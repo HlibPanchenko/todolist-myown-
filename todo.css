@@ -123,6 +123,16 @@ h6 {
   border: 1px solid black;
   padding: 20px;
 }
+
+.doneAllLi {
+  background-color: rgba(67, 65, 65, 0.179);
+  color: rgba(67, 65, 65, 0.879);
+  text-decoration: line-through;
+  font-weight: 700;
+}
+
+
+
 .button-todo {
   display: flex;
   gap: 8px;
@@ -172,7 +182,7 @@ h6 {
 .addtask {
   display: flex;
   flex-direction: column;
-  margin: 50px 0px 0px 0px;
+  margin: 50px 0px 1000px 0px;
   border: 1px solid black;
 }
 .addtask__title {
@@ -199,6 +209,7 @@ h6 {
   color: white;
   font-weight: 700;
 }
+
 
 body._locked {
   overflow: hidden;
