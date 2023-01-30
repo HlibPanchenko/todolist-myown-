@@ -30,13 +30,13 @@ if (localStorage.getItem("task")) {
     	 </div>
     	 <div class="todo__right button-todo">
     		<button class="button-todo__green" id="done-button">
-    		  <img class="button-todo" src="img/tick.svg" alt="" />
+    		  <img class="button-todo" src="./img/tick.svg" alt="" />
     		</button>
     		<button class="button-todo__red" id="delete-button">
-    		  <img class="button-todo" src="img/cross.svg" alt="" />
+    		  <img class="button-todo" src="./img/cross.svg" alt="" />
     		</button>
         <button class="button-todo__edit" id="edit-button">
-                      <img class="button-todo" src="img/pencil.png" alt="" />
+                      <img class="button-todo" src="./img/pencil.png" alt="" />
                     </button>
     	 </div>
       </li>`;
@@ -83,13 +83,13 @@ function addTask(e) {
 	 </div>
 	 <div class="todo__right button-todo">
 		<button class="button-todo__green" id="done-button">
-		  <img class="button-todo" src="img/tick.svg" alt="" />
+		  <img class="button-todo" src="./img/tick.svg" alt="" />
 		</button>
 		<button class="button-todo__red" id="delete-button">
-		  <img class="button-todo" src="img/cross.svg" alt="" />
+		  <img class="button-todo" src="./img/cross.svg" alt="" />
 		</button>
     <button class="button-todo__edit" id="edit-button">
-                  <img class="button-todo" src="img/pencil.png" alt="" />
+                  <img class="button-todo" src="./img/pencil.png" alt="" />
                 </button>
 	 </div>
   </li>`;
@@ -212,13 +212,13 @@ function editTextInput(e) {
      </div>
      <div class="todo__right button-todo">
     	<button class="button-todo__green" id="done-button">
-    	  <img class="button-todo" src="img/tick.svg" alt="" />
+    	  <img class="button-todo" src="./img/tick.svg" alt="" />
     	</button>
     	<button class="button-todo__red" id="delete-button">
-    	  <img class="button-todo" src="img/cross.svg" alt="" />
+    	  <img class="button-todo" src="./img/cross.svg" alt="" />
     	</button>
       <button class="button-todo__edit" id="edit-button">
-                    <img class="button-todo" src="img/pencil.png" alt="" />
+                    <img class="button-todo" src="./img/pencil.png" alt="" />
                   </button>
      </div>
     </li>`;
